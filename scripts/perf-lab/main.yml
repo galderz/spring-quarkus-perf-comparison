@@ -72,7 +72,7 @@ states:
       updateScript: update-quarkus-version
       updateVersion: ${{config.quarkus.version}}
       buildRequiresTestServices: false
-      buildCmd: "${{APP_CMD_PREFIX}} ./mvnw ${{config.quarkus.build_config_args}} clean package -DskipTests"
+      buildCmd: "MAVEN_OPTS=--enable-preview ${{APP_CMD_PREFIX}} ./mvnw ${{config.quarkus.build_config_args}} clean package -DskipTests"
       runCmd: "${{BASE_JAVA_CMD}} -jar ${{RUNTIME_BUILD_DIR}}/quarkus-app/quarkus-run.jar"
       logFileStartedRegex: ".*quarkus3.+started in.*"
     - name: quarkus3-leyden
