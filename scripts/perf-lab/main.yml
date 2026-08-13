@@ -342,7 +342,7 @@ scripts:
   update-quarkus-version:
     - script: check-dependency-exists
       with:
-        groupId: io.quarkus.platform
+        groupId: io.quarkus
         artifactId: quarkus-bom
         version: ${{VERSION}}
     - sh: ./mvnw versions:set-property -Dproperty=quarkus.platform.version -DnewVersion=${{VERSION}}
