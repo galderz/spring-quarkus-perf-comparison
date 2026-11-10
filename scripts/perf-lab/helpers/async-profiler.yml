@@ -21,7 +21,7 @@ scripts:
             - set-state: platform macos
             - set-state: filesuffix .zip
             - set-state: unpack_command unzip
-    - sh: curl -L -o ${{ASYNC_PROFILER}}${{filesuffix}} $(curl -s -L https://api.github.com/repos/${{ASYNC_PROFILER}}/${{ASYNC_PROFILER}}/releases/latest  | jq -r '.assets[] | select(.name | contains ("${{platform}}${{filesuffix}}")) | .browser_download_url') 2>/dev/null
+    - sh: curl -L -o ${{ASYNC_PROFILER}}${{filesuffix}} https://github.com/${{ASYNC_PROFILER}}/${{ASYNC_PROFILER}}/releases/download/nightly/async-profiler-4.6-e98d8c2-linux-x64.tar.gz
     - sh: ${{unpack_command}} ${{ASYNC_PROFILER}}${{filesuffix}}
       then:
         - regex: (?<subDir>^[^/]+)/
